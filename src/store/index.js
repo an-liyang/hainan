@@ -25,6 +25,7 @@ const state = {
     isLogin: 0,
     loading: false,
     language: getLanguage(),
+    heightClient:0
 }
 export default new Vuex.Store({
     state,
@@ -35,6 +36,10 @@ export default new Vuex.Store({
         language: state => state.language,
     },
     mutations: {
+        // 获取当前屏幕高度
+        getHeight(state, status){
+            state.heightClient = status
+        },   
         switch_creat_user_dialog(state) {
             state.creatUserVisible = !state.creatUserVisible
         },

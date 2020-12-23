@@ -1,5 +1,5 @@
 <template>
-  <div class="hostManage" :style="{ backgroundImage: 'url(' + bgLogin + ')' }">
+  <div class="hostManage" :style="{ backgroundImage: 'url(' + bgLogin + ')',height:flagheight?'100%':'' }">
     <header class="titles">海南省人口动态分析预测预警平台</header>
     <!-- 内容区 -->
     <section>
@@ -126,6 +126,7 @@ import {
 } from '@/util/data'
 
 import bg from '@/../static/image/banner.png'
+import store from '@/store/index.js'
 import RingChart from '@/components/Chart/RingChart'
 export default {
     name: 'hostManage',
@@ -290,17 +291,27 @@ export default {
         }
     },
     computed: {
-       
+        flagheight() {
+            return this.$store.state.heightClient>900?true:false
+        }
+    },
+    watch: {
+        // '$store.state.heightClient'(val){
+        //     console.log(val)
+        // }
     },
     mounted() {
+        
     },
     methods: {
-    
     }
 }
 </script>
 
 <style scoped>
+/* #app{
+  background-image: url('../../../static/image/banner.png');
+} */
 .mb2{
   margin-bottom: 2rem;
 }
@@ -314,8 +325,7 @@ export default {
   margin-right: 1rem;
 }
 .hostManage{
-  position: relative;
-  height: inherit;
+    position: relative;
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;

@@ -1,5 +1,5 @@
 <template>
-    <div class="login-bg" :style="{ backgroundImage: 'url(' + bgLogin + ')' }">
+    <div class="login-bg" :style="{ backgroundImage: 'url(' + bgLogin + ')',height:flagheight?'100%':'' }">
         <header class="titles">海南省人口动态分析预测预警平台</header>
         <div class="login">
             <div class="msg-wrapper">
@@ -149,6 +149,9 @@ export default {
                 ]
             }
             return obj
+        },
+        flagheight() {
+            return this.$store.state.heightClient>730?true:false
         }
     },
     mounted: function() {
@@ -320,7 +323,7 @@ export default {
 .login-bg {
     position: relative;
     width: 100%;
-    height: inherit;
+   /* height: 100%; */
     background-repeat: no-repeat;
     background-size: cover;
 }
